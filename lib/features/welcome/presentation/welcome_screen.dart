@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../home/presentation/home_shell.dart';
+import '../../auth/presentation/login_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -50,17 +50,15 @@ class WelcomeScreen extends StatelessWidget {
                 height: 54,
                 child: FilledButton(
                   onPressed: () {
-                    Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(
-                        builder: (context) => const HomeShell(),
+                    Navigator.of(context).push(
+                      MaterialPageRoute<void>(
+                        builder: (context) => const LoginScreen(),
                       ),
                     );
                   },
                   child: const Text(
                     'Započni',
-                    style: TextStyle(
-                      fontSize: 16,
-                    ),
+                    style: TextStyle(fontSize: 16),
                   ),
                 ),
               ),
