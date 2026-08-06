@@ -15,13 +15,6 @@ class HomeShell extends StatefulWidget {
 class _HomeShellState extends State<HomeShell> {
   int _selectedIndex = 0;
 
-  static const List<Widget> _screens = [
-    HomeScreen(),
-    SearchRidesScreen(),
-    PublishRideScreen(),
-    ProfileScreen(),
-  ];
-
   void _changeScreen(int index) {
     setState(() {
       _selectedIndex = index;
@@ -30,6 +23,16 @@ class _HomeShellState extends State<HomeShell> {
 
   @override
   Widget build(BuildContext context) {
+    final screens = [
+      HomeScreen(
+        onSearchRide: () => _changeScreen(1),
+        onPublishRide: () => _changeScreen(2),
+      ),
+      const SearchRidesScreen(),
+      const PublishRideScreen(),
+      const ProfileScreen(),
+    ];
+
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -39,7 +42,7 @@ class _HomeShellState extends State<HomeShell> {
       ),
       body: IndexedStack(
         index: _selectedIndex,
-        children: _screens,
+        children: screens,
       ),
       bottomNavigationBar: NavigationBar(
         selectedIndex: _selectedIndex,
